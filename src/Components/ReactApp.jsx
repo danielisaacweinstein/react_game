@@ -1,6 +1,8 @@
 "use strict"
 
 import React from 'react'
+import Grid from './Grid.jsx'
+import { Provider } from 'react-redux'
 
 class ReactApp extends React.Component {
     constructor(props) {
@@ -8,8 +10,16 @@ class ReactApp extends React.Component {
         this.displayName = 'ReactApp';
     }
     render() {
-        return <div>ReactApp</div>;
+        return (
+          <Grid width="3" />
+        );
     }
 }
 
-export default ReactApp;
+// function mapStateToProps(state) {
+//   return {
+//     highlighted: state.highlight
+//   }
+// })
+
+export default connect()(ReactApp);
