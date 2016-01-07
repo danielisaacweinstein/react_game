@@ -16,7 +16,13 @@ class Cell extends React.Component {
         this.displayName = 'Cell';
     }
     render() {
-        return <div style={style.gridCell}>{this.props.id}</div>;
+        return (<div style={style.gridCell}
+                onCellClick={ this.props.id =>
+                  dispatch(highlightCell())
+
+                } >
+                  {this.props.id}
+                </div>;
     }
 }
 

@@ -1,25 +1,23 @@
 "use strict"
 
 import React from 'react'
-import Grid from './Grid.jsx'
-import { Provider } from 'react-redux'
+import { connect } from 'react-redux'
+import { Grid } from './Grid.jsx'
 
-class ReactApp extends React.Component {
-    constructor(props) {
-        super(props);
-        this.displayName = 'ReactApp';
-    }
+export class ReactApp extends React.Component {
     render() {
         return (
-          <Grid width="3" />
+          <div>
+            <Grid width="3" gridData={ this.props.gridData } />
+          </div>
         );
     }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     highlighted: state.highlight
-//   }
-// })
+function mapStateToProps(state) {
+  return {
+    gridData: state.get('gridData')
+  }
+}
 
-export default connect()(ReactApp);
+export const AppContainer = connect(mapStateToProps)(ReactApp);
