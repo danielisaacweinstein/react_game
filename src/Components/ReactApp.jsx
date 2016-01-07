@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { Grid } from './Grid.jsx'
+import Grid from './Grid.jsx'
 
 export class ReactApp extends React.Component {
     render() {

@@ -8,6 +8,9 @@ let style = {
     height: '50px',
     margin: '5px',
     display: 'inline-block'
+  },
+  highlighted: {
+    backgroundColor: 'red'
   }
 }
 
@@ -15,10 +18,13 @@ class Cell extends React.Component {
 
     render() {
         const { highlighted, index } = this.props
-        console.log({index})
+        let cssClass = ''
+        if (highlighted == true) {
+          cssClass = 'highlighted'
+        }
 
         return (
-          <div style={style.gridCell}>
+          <div className={cssClass} style={style.gridCell}>
             <p>{index}</p>
           </div>
         )

@@ -8,10 +8,16 @@ function setInitialState(state, newData) {
   return state.merge(newData)
 }
 
+function highlightCell(state, newData) {
+  return state.merge(newData)
+}
+
 function reducer(state = Map(), action) {
   switch (action.type) {
     case 'SET_INITIAL_STATE':
       return setInitialState(state, action.data)
+    case 'HIGHLIGHT':
+      return highlightCell(state, action.data)
   }
   return state
 }
