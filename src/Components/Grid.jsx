@@ -1,20 +1,31 @@
-
 import React from 'react';
-// import Cell from './Cell.jsx'
+import Cell from './Cell.jsx'
 
 let style = {
   grid: {
-    width: '75px',
-    height: '75px',
+    width: '180px',
+    height: '180px',
     backgroundColor: 'black',
   }
 }
 
 export class Grid extends React.Component {
-    render() {
-      console.log(this.props.gridData.get('highlighted'))
+
+  getCells() {
+    console.log(this.props.cellData.toJS())
+    return this.props.cellData.toJS().map((cell, i) => {
       return (
-        <div></div>
+        <Cell highlighted={cell.highlighted} key={i} index={i} />
       )
-    }
+    })
+  }
+
+  render() {
+    return (
+      <div style={style.grid}>
+        {this.getCells()}
+      </div>
+    )
+  }
+
 }

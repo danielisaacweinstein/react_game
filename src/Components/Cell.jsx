@@ -3,26 +3,25 @@ import React from 'react';
 let style = {
   gridCell: {
     backgroundColor: '#eee',
-    width: '15px',
-    height: '15px',
+    textAlign: 'center',
+    width: '50px',
+    height: '50px',
     margin: '5px',
     display: 'inline-block'
   }
 }
 
 class Cell extends React.Component {
-    constructor(props) {
-        super(props);
-        this.displayName = 'Cell';
-    }
-    render() {
-        return (<div style={style.gridCell}
-                onCellClick={ this.props.id =>
-                  dispatch(highlightCell())
 
-                } >
-                  {this.props.id}
-                </div>;
+    render() {
+        const { highlighted, index } = this.props
+        console.log({index})
+
+        return (
+          <div style={style.gridCell}>
+            <p>{index}</p>
+          </div>
+        )
     }
 }
 

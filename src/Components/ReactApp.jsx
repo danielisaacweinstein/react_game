@@ -8,7 +8,7 @@ export class ReactApp extends React.Component {
     render() {
         return (
           <div>
-            <Grid width="3" gridData={ this.props.gridData } />
+            <Grid width={ this.props.gridWidth } cellData={ this.props.cellData } />
           </div>
         );
     }
@@ -16,7 +16,8 @@ export class ReactApp extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    gridData: state.get('gridData')
+    gridWidth: state.get('gridWidth'),
+    cellData: state.get('cellData')
   }
 }
 

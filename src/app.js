@@ -12,10 +12,9 @@ const store = createStore(reducer)
 
 store.dispatch({type: 'SET_INITIAL_STATE',
                 data: {
-                  gridData: {
-                    highlighted: 'yay'
-                  }
-                } 
+                  gridWidth: 3,
+                  cellData: []
+                }
               })
 
 ReactDOM.render(
