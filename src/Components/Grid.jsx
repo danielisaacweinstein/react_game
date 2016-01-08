@@ -13,8 +13,14 @@ let style = {
 export class Grid extends React.Component {
   highlightCell(i) {
     let currentState = this.props.cellData.toJS()
-    currentState[i].highlighted = true
-    return { type: 'HIGHLIGHT_CELL', data: this.props }
+    currentState[i].color = '#00aeef'
+    console.log(currentState)
+    return {
+      type: 'HIGHLIGHT_CELL',
+      data: {
+        cellData: currentState
+      }
+    }
   }
 
   getCells() {
@@ -23,9 +29,9 @@ export class Grid extends React.Component {
     return this.props.cellData.toJS().map((cell, i) => {
       return (
         <Cell
-        highlighted={cell.highlighted}
+        color={cell.color}
         index={i}
-        onClick={dispatch(this.highlightCell(i))}
+        onCellClick={() => dispatch(this.highlightCell(i))}
         key={i} />
       )
     })
@@ -38,7 +44,6 @@ export class Grid extends React.Component {
       </div>
     )
   }
-
 }
 
 export default connect()(Grid)
