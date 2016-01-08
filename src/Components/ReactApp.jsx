@@ -5,13 +5,13 @@ import { connect } from 'react-redux'
 import Grid from './Grid.jsx'
 
 export class ReactApp extends React.Component {
-    render() {
-        return (
-          <div>
-            <Grid width={ this.props.gridWidth } cellData={ this.props.cellData } />
-          </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <Grid width={ this.props.gridWidth } cellData={ this.props.cellData } />
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state) {

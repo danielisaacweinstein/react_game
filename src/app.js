@@ -6,16 +6,17 @@ import reducer from './reducer.js'
 import { AppContainer } from './Components/ReactApp.jsx'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { highlightCell, setInitialState } from './actions.js'
+import * as action from './actions.js'
 
 const store = createStore(reducer)
 
-store.dispatch({type: 'SET_INITIAL_STATE',
-                data: {
-                  gridWidth: 3,
-                  cellData: []
-                }
-              })
+store.dispatch({
+  type: 'SET_INITIAL_STATE',
+  data: {
+    gridWidth: 3,
+    cellData: []
+  }
+})
 
 ReactDOM.render(
   <Provider store={store}>

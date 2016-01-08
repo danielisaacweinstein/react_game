@@ -3,7 +3,7 @@ import React from 'react';
 class Cell extends React.Component {
 
     render() {
-        const { color, index } = this.props
+        const { color, position } = this.props
 
         const style = {
           gridCell: {
@@ -13,6 +13,10 @@ class Cell extends React.Component {
             height: '50px',
             margin: '5px',
             display: 'inline-block'
+          },
+          innerCell: {
+            fontSize: '20px',
+            margin: '12px 0'
           }
         }
 
@@ -20,7 +24,7 @@ class Cell extends React.Component {
           <div
             style={style.gridCell}
             onClick={this.props.onCellClick}>
-            <p>{index}</p>
+            <p style={style.innerCell}>{position}</p>
           </div>
         )
     }

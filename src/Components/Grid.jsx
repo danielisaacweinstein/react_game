@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { HIGHLIGHT_CELL } from '../actions.js'
+import * as action from '../actions.js'
 import Cell from './Cell.jsx'
 
 let style = {
@@ -13,15 +13,25 @@ let style = {
 
 export class Grid extends React.Component {
 
-  getCells() {
-    const { dispatch } = this.props
+  componentDidMount() {
+    window.addEventListener('keydown', (e) => {
+      const { dispatch, cellData } = this.props
+      dispatch(action.MOVE_CELLS(cellData.toJS(), e.keyCode))
+    })
+  }
 
-    return this.props.cellData.toJS().map((cell, i) => {
+  componentWillUnmount() {
+   window.removeEventListener('keydown', this.handleKeyDown)
+  }
+
+  getCells() {
+    const { dispatch, cellData } = this.props
+
+    return cellData.toJS().map((cell, i) => {
       return (
         <Cell
         color={cell.color}
-        index={i}
-        onCellClick={() => dispatch(HIGHLIGHT_CELL(this.props.cellData.toJS(), i))}
+        position={cell.position}
         key={i} />
       )
     })
