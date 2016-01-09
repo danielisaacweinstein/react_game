@@ -19,7 +19,7 @@ class Cell extends React.Component {
         return (
           <div
             style={style.gridCell}
-            onClick={this.props.onCellClick}>
+            onClick={() => this.props.onCellClick(index)}>
             <p>{index}</p>
           </div>
         )

@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import Cell from './Cell.jsx'
 
 let style = {
@@ -11,28 +10,15 @@ let style = {
 }
 
 export class Grid extends React.Component {
-  highlightCell(i) {
-    let currentState = this.props.cellData.toJS()
-    currentState[i].color = '#00aeef'
-    console.log(currentState)
-    return {
-      type: 'HIGHLIGHT_CELL',
-      data: {
-        cellData: currentState
-      }
-    }
-  }
 
   getCells() {
-    const { dispatch } = this.props
-
     return this.props.cellData.toJS().map((cell, i) => {
       return (
         <Cell
-        color={cell.color}
-        index={i}
-        onCellClick={() => dispatch(this.highlightCell(i))}
-        key={i} />
+         color={cell.color}
+         index={i}
+         onCellClick={(i) => this.props.onCellClick(i)}
+         key={i} />
       )
     })
   }
@@ -45,5 +31,3 @@ export class Grid extends React.Component {
     )
   }
 }
-
-export default connect()(Grid)

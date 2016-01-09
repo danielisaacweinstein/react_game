@@ -1,34 +1,20 @@
-// export function setInitialState(state) {
-//   return {
-//     type: 'SET_INITIAL_STATE',
-//     state
-//   }
-// }
+// Action creators
 
-
-/*
- * action types
- */
-
-export const SET_INITIAL_STATE = 'SET_INITIAL_STATE'
-export const HIGHLIGHT = 'HIGHLIGHT'
-
-/*
- * action creators
- */
-
-let cellID = 0
-
-export function highlightCell(index) {
+export function setInitialState() {
   return {
-    type: HIGHLIGHT,
-    index
+    type: 'SET_INITIAL_STATE',
+    data: {
+      gridWidth: 3,
+      cellData: []
+    }
   }
 }
 
-// export function setInitialState(state) {
-//   return {
-//     type: SET_INITIAL_STATE
-//     state
-//   }
-// }
+export function highlightCell(index) {
+  return {
+    type: 'HIGHLIGHT_CELL',
+    data: {
+      id: index
+    }
+  }
+}

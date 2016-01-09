@@ -9,7 +9,7 @@ function setInitialState(state, newData) {
 }
 
 function highlightCell(state, newData) {
-  return state.merge(newData)
+  return state.updateIn(['cellData', newData.id, 'color'], () => '#00aeef')
 }
 
 function reducer(state = Map(), action) {
