@@ -8,11 +8,6 @@ export const HIGHLIGHT_CELL = (cellData, cellId) => {
   }
 }
 
-// left arrow	37
-// up arrow	38
-// right arrow	39
-// down arrow	40
-
 export const MOVE_CELLS = (cellData, keyCode) => {
   let positionChange = 0
   switch (keyCode) {
@@ -30,9 +25,21 @@ export const MOVE_CELLS = (cellData, keyCode) => {
       break
   }
 
-  for (var i = 0; i < 9; i++) {
-    cellData[i].position += positionChange
+  const findEmptyCell = (cellData) => {
+    for (let i = 0; i < cellData.length; i++) {
+      if (cellData[i].position == 0) {
+        return i
+      }
+    }
+    return null
   }
+
+  let emptyCellId = (findEmptyCell(cellData))
+  console.log(emptyCellId, positionChange)
+  let movingCellId_1 = emptyCellId + positionChange
+  cellData[emptyCellId].position = cellData[movingCellId_1].position
+  cellData[movingCellId_1].position = 0
+  console.log(cellData)
 
   return {
     type: 'MOVE_CELLS',

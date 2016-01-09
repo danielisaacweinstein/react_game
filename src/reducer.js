@@ -8,6 +8,7 @@ function setInitialState(state, newData) {
       position: i
     })
   }
+  // newData.cellData[0].position = ''
   return state.merge(newData)
 }
 

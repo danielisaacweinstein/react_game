@@ -3,7 +3,11 @@ import React from 'react';
 class Cell extends React.Component {
 
     render() {
-        const { color, position } = this.props
+        const { position } = this.props
+        let color = '#00aeef'
+        if (position == 0) {
+          color = '#eee'
+        }
 
         const style = {
           gridCell: {
